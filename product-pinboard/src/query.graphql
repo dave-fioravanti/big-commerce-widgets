@@ -1,0 +1,46 @@
+query ProductPinboard($productIds: [Int!], $activeCurrencyCode: currencyCode!) {
+  site {
+    settings {
+      tax {
+        plp
+      }
+    }
+    products(entityIds: $productIds, first: 50) {
+      edges {
+        node {
+          entityId
+          sku
+          name
+          path
+          defaultImage {
+            altText
+            url320wide: url(width: 320)
+            url640wide: url(width: 640)
+          }
+          priceWithTax: prices(includeTax: true, currencyCode: $activeCurrencyCode) {
+            price {
+              formatted
+            }
+            salePrice {
+              formatted
+            }
+            basePrice {
+              formatted
+            }
+          }
+          priceWithoutTax: prices(includeTax: false, currencyCode: $activeCurrencyCode) {
+            price {
+              formatted
+            }
+            salePrice {
+              formatted
+            }
+            basePrice {
+              formatted
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,696 @@
+{{!-- ======================================================================================== --}}
+{{!-- Product Pinboard: Stylesheet                                                             --}}
+{{!-- ======================================================================================== --}}
+
+<style>
+    .product-pinboard--{{_.id}} {
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 20px;
+        font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+        --pin-default-size: {{#if pinDefaultSize}}{{pinDefaultSize}}px{{else}}18px{{/if}};
+        --pin-active-size: {{#if pinActiveSize}}{{pinActiveSize}}px{{else}}28px{{/if}};
+        --pin-default-color: {{#if pinDefaultColor}}{{pinDefaultColor}}{{else}}#ffffff{{/if}};
+        --pin-default-border-color: {{#if pinDefaultBorderColor}}{{pinDefaultBorderColor}}{{else}}#d0d0d0{{/if}};
+        --pin-active-color: {{#if pinActiveColor}}{{pinActiveColor}}{{else}}#1f1f1f{{/if}};
+        --pin-active-border-color: {{#if pinActiveBorderColor}}{{pinActiveBorderColor}}{{else}}#1f1f1f{{/if}};
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pinboard-header {
+        margin-bottom: 24px;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__title {
+        font-size: {{#if pinboardTitleFontSize}}{{pinboardTitleFontSize}}px{{else}}24px{{/if}};
+        font-weight: 700;
+        color: {{#if pinboardTitleTextColor}}{{pinboardTitleTextColor}}{{else}}#1a1a1a{{/if}};
+        margin: 0 0 8px;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__description {
+        font-size: {{#if pinboardDescriptionFontSize}}{{pinboardDescriptionFontSize}}px{{else}}16px{{/if}};
+        color: {{#if pinboardDescriptionTextColor}}{{pinboardDescriptionTextColor}}{{else}}#333333{{/if}};
+        margin: 0;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pinboard-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+        gap: 32px;
+        align-items: start;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pinboard-image-wrapper {
+        position: relative;
+        width: 100%;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #f3f3f3;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pinboard-image-wrapper img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pin {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pin-dot {
+        display: block;
+        width: var(--pin-default-size);
+        height: var(--pin-default-size);
+        border-radius: 50%;
+        background: var(--pin-default-color);
+        border: 3px solid var(--pin-default-border-color);
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+        transition: width 0.2s ease, height, 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pin.is-active .product-pinboard__pin-dot,
+    .product-pinboard--{{_.id}} .product-pinboard__pin:hover .product-pinboard__pin-dot,
+    .product-pinboard--{{_.id}} .product-pinboard__pin:focus .product-pinboard__pin-dot {
+        width: var(--pin-active-size);
+        height: var(--pin-active-size);
+        background: var(--pin-active-color);
+        border-color: var(--pin-active-border-color);
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__tooltip {
+        position: absolute;
+        left: 50%;
+        bottom: 140%;
+        transform: translateX(-50%);
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 10px;
+        min-width: 200px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        z-index: 5;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: #ffffff transparent transparent transparent;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__pin:hover .product-pinboard__tooltip,
+    .product-pinboard--{{_.id}} .product-pinboard__pin:focus .product-pinboard__tooltip {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__tooltip-image img {
+        display: block;
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        background: #f5f5f5;
+        border-radius: 6px;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__tooltip-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: #222222;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__tooltip-price {
+        font-size: 12px;
+        color: #444;
+        display: block;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__price--strike {
+        text-decoration: line-through;
+        color: #999999;
+        margin-right: 6px;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__price--secondary {
+        display: block;
+        color: #777777;
+        font-weight: 500;
+        margin-top: 2px;
+        font-size: 12px;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card {
+        display: none;
+        background: {{cardBackgroundColor}};
+        border: 1px solid {{cardBorderColor}};
+        border-radius: {{cardBorderRadius}}px;
+        padding: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card.is-active {
+        display: block;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card-image {
+        width: 100%;
+        background: #f7f7f7;
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 14px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 8px;
+        color: #1d1d1d;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card-price {
+        font-size: 16px;
+        font-weight: 600;
+        color: #444444;
+        margin: 0;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card-link {
+        display: inline-block;
+        margin-top: 12px;
+        text-decoration: none;
+        font-size: 14px;
+        color: {{#if cardLinkColor}}{{cardLinkColor}}{{else}}blue{{/if}};
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card-column {
+        position: relative;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__card-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8px;
+        pointer-events: none;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__nav-button {
+        border: 1px solid #d6d6d6;
+        background: #ffffff;
+        color: #333333;
+        border-radius: 999px;
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease;
+        pointer-events: auto;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__nav-button:hover,
+    .product-pinboard--{{_.id}} .product-pinboard__nav-button:focus {
+        background: #f3f3f3;
+        border-color: #bdbdbd;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        border: 1px solid #bdbdbd;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .product-pinboard--{{_.id}} .product-pinboard__dot.is-active {
+        background: #1f1f1f;
+        border-color: #1f1f1f;
+    }
+
+    .product-pinboard__card-sku {
+        font-size: 12px;
+        margin: 0 0 8px;
+    }
+
+    @media (max-width: {{#if tabletBreakpointWidth}}{{tabletBreakpointWidth}}{{else}}900{{/if}}px) {
+        .product-pinboard--{{_.id}} .product-pinboard__title {
+            text-align: center;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__description {
+            text-align: center;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__pinboard-layout {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__pinboard-image-column {
+            order: {{#if showProductCardAboveImage}}1{{else}}-1{{/if}};
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-column {
+            order: {{#if showProductCardAboveImage}}-1{{else}}1{{/if}};
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__tooltip {
+            display: none;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card.is-active {
+            display: grid;
+            grid-template-columns: minmax(0, 160px) minmax(0, 1fr);
+            column-gap: 12px;
+            align-items: center;
+        }
+        
+        .product-pinboard--{{_.id}} .product-pinboard__card-image-wrapper {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-image-wrapper img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-image {
+            padding: 0;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-info-wrapper {
+            padding: 0;
+            min-width: 0;
+        }
+    }
+
+    @media (max-width: {{#if mobileBreakpointWidth}}{{mobileBreakpointWidth}}{{else}}400{{/if}}px) {
+        .product-pinboard--{{_.id}} .product-pinboard__pinboard-image-column {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-column {
+            width: 100%;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card.is-active {
+            grid-template-columns: 1fr;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-image {
+            max-width: 180px;
+            margin: auto;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-title {
+            margin-top: 12px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .product-pinboard__card-sku {
+            text-align: center;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-price {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-link-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-pinboard--{{_.id}} .product-pinboard__card-link {
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+</style>
+
+{{!-- ======================================================================================== --}}
+{{!-- Product Pinboard: Layout                                                                 --}}
+{{!-- ======================================================================================== --}}
+
+<section class="product-pinboard product-pinboard--{{_.id}}" id="product-pinboard-{{_.id}}">
+    <div class="product-pinboard__pinboard-header">
+        <h2 class="product-pinboard__title">{{pinboardTitle}}</h2>
+        {{#if pinboardDescription}}
+            <p class="product-pinboard__description">{{pinboardDescription}}</p>
+        {{/if}}
+    </div>
+    <div class="product-pinboard__pinboard-layout">
+        <div class="product-pinboard__pinboard-image-column">
+            <div class="product-pinboard__pinboard-image-wrapper">
+                {{#if pinboardImage.src}}
+                    <img 
+                        class="product-pinboard__pinboard-image" 
+                        src="{{pinboardImage.src}}" 
+                        alt="{{pinboardImageAltText}}" 
+                        loading="lazy" 
+                    />
+                {{/if}}
+                {{#each pins}}
+                    <button
+                        type="button"
+                        class="product-pinboard__pin"
+                        style="top: {{yPosition}}%; left: {{xPosition}}%;"
+                        data-pin-index="{{@index}}"
+                        data-product-id="{{productId}}"
+                    >
+                        <span class="product-pinboard__pin-dot"></span>
+                        <span class="product-pinboard__tooltip">
+                            {{#each @root._.data.site.products.edges as |pinnedProduct|}}
+                                {{#if pinnedProduct.node.entityId '==' (toInt ../productId)}}
+                                    <span class="product-pinboard__tooltip-image">
+                                        {{#if pinnedProduct.node.defaultImage}}
+                                            <img 
+                                                src="{{pinnedProduct.node.defaultImage.url320wide}}" 
+                                                alt="{{pinnedProduct.node.defaultImage.altText}}" 
+                                                loading="lazy" 
+                                            />
+                                        {{/if}}
+                                    </span>
+                                    <span class="product-pinboard__tooltip-content">
+                                        <span class="product-pinboard__tooltip-title">
+                                            {{pinnedProduct.node.name}}
+                                        </span>
+                                        <span class="product-pinboard__tooltip-price">
+                                            {{#if @root._.data.site.settings.tax.plp '==' 'EX'}}
+                                                {{#if pinnedProduct.node.priceWithoutTax.salePrice}}
+                                                    <span class="product-pinboard__price--strike">
+                                                        {{pinnedProduct.node.priceWithoutTax.basePrice.formatted}}
+                                                    </span>
+                                                {{/if}}
+                                                <span class="product-pinboard__price">
+                                                    {{pinnedProduct.node.priceWithoutTax.price.formatted}}
+                                                </span>
+                                            {{/if}}
+                                            {{#if @root._.data.site.settings.tax.plp '==' 'INC'}}
+                                                {{#if pinnedProduct.node.priceWithTax.salePrice}}
+                                                    <span class="product-pinboard__price-strike">
+                                                        {{pinnedProduct.node.priceWithTax.price.formatted}}
+                                                    </span>
+                                                {{/if}}
+                                                <span class="product-pinboard__price">
+                                                    {{pinnedProduct.node.priceWithTax.price.formatted}}
+                                                </span>
+                                            {{/if}}
+                                            {{#if @root._.data.site.settings.tax.plp '==' 'BOTH'}}
+                                                {{#if pinnedProduct.node.priceWithoutTax.salePrice}}
+                                                    <span class="product-pinboard__price--strike">
+                                                        {{pinnedProduct.node.priceWithoutTax.basePrice.formatted}}
+                                                    </span>
+                                                {{/if}}
+                                                <span class="product-pinboard__price">
+                                                    Ex: {{pinnedProduct.node.priceWithoutTax.price.formatted}}
+                                                </span>
+                                                {{#if pinnedProduct.node.priceWithTax.price}}
+                                                    <span class="product-pinboard__price--secondary">
+                                                        Inc: {{pinnedProduct.node.priceWithTax.price.formatted}}
+                                                    </span>
+                                                {{/if}}
+                                            {{/if}}
+                                            {{#unless @root._.data.site.settings.tax.plp}}
+                                                <span class="product-pinboard__price">
+                                                    {{pinnedProduct.node.priceWithoutTax.price.formatted}}
+                                                </span>
+                                            {{/unless}}
+                                        </span>
+                                    </span>
+                                {{/if}}
+                            {{/each}}
+                        </span>
+                    </button>
+                {{/each}}
+            </div>
+        </div>
+        <div class="product-pinboard__card-column">
+            <div class="product-pinboard__card-nav">
+                <button
+                    type="button"
+                    class="product-pinboard__nav-button"
+                    data-pin-nav="prev"
+                    aria-label="Previous Pinned Product"
+                >
+                    &#x276E;
+                </button>
+                <button
+                    type="button"
+                    class="product-pinboard__nav-button"
+                    data-pin-nav="next"
+                    aria-label="Next Pinned Product"
+                >
+                    &#x276F;
+                </button>
+            </div>
+            {{#each pins}}
+                <article class="product-pinboard__card" data-pin-index="{{@index}}">
+                    {{#each @root._.data.site.products.edges as |pinnedProduct|}}
+                        {{#if pinnedProduct.node.entityId '==' (toInt ../productId)}}
+                        <div class="product-pinboard__card-image-wrapper">
+                            <div class="product-pinboard__card-image">
+                                {{#if pinnedProduct.node.defaultImage}}
+                                    <img 
+                                        src="{{pinnedProduct.node.defaultImage.url640wide}}" 
+                                        alt="{{pinnedProduct.node.defaultImage.altText}}" 
+                                        loading="lazy" 
+                                    />
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="product-pinboard__card-info-wrapper">
+
+                            <h3 class="product-pinboard__card-title">
+                                {{pinnedProduct.node.name}}
+                            </h3>
+                            {{#if @root.showProductSku}}
+                            <p class="product-pinboard__card-sku">
+                                SKU: {{pinnedProduct.node.sku}}
+                            </p>
+                            {{/if}}
+                            <p class="product-pinboard__card-price">
+                                {{#if @root._.data.site.settings.tax.plp '==' 'EX'}}
+                                    {{#if pinnedProduct.node.priceWithoutTax.salePrice}}
+                                        <span class="product-pinboard__price--strike">
+                                            {{pinnedProduct.node.priceWithoutTax.basePrice.formatted}}
+                                        </span>
+                                    {{/if}}
+                                    <span class="product-pinboard__price">
+                                        {{pinnedProduct.node.priceWithoutTax.price.formatted}}
+                                    </span>
+                                {{/if}}
+                                {{#if @root._.data.site.settings.tax.plp '==' 'INC'}}
+                                    {{#if pinnedProduct.node.priceWithTax.salePrice}}
+                                        <span class="product-pinboard__price--strike">
+                                            {{pinnedProduct.node.priceWithTax.basePrice.formatted}}
+                                        </span>
+                                    {{/if}}
+                                    <span class="product-pinboard__price">
+                                        {{pinnedProduct.node.priceWithTax.price.formatted}}
+                                    </span>
+                                {{/if}}
+                                {{#if @root._.data.site.settings.tax.plp '==' 'BOTH'}}
+                                    {{#if pinnedProduct.node.priceWithoutTax.salePrice}}
+                                        <span class="product-pinboard__price--strike">
+                                            {{pinnedProduct.node.priceWithoutTax.basePrice.formatted}}
+                                        </span>
+                                    {{/if}}
+                                    <span class="product-pinboard__price">
+                                        Ex: {{pinnedProduct.node.priceWithoutTax.price.formatted}}
+                                    </span>
+                                    {{#if pinnedProduct.node.priceWithTax.price}}
+                                        <span class="product-pinboard__price--secondary">
+                                            Inc: {{pinnedProduct.node.priceWithTax.price.formatted}}
+                                        </span>
+                                    {{/if}}
+                                {{/if}}
+                                {{#unless @root._.data.site.settings.tax.plp}}
+                                    <span class="product-pinboard__price">
+                                        {{pinnedProduct.node.priceWithoutTax.price.formatted}}
+                                    </span>
+                                {{/unless}}
+                            </p>
+                            <div class="product-pinboard__card-link-container">
+                                <a class="product-pinboard__card-link" href="{{pinnedProduct.node.path}}">
+                                    View product
+                                </a>
+                            </div>
+                        </div>
+                        {{/if}}
+                    {{/each}}
+                </article>
+            {{/each}}
+            <div class="product-pinboard__dots" aria-label="Pinned Product Navigation">
+                {{#each pins}}
+                    <button
+                        type="button"
+                        class="product-pinboard__dot"
+                        data-pin-dot="{{@index}}"
+                        aria-label="Go to product {{@index}}"
+                    ></button>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- ======================================================================================== --}}
+{{!-- Product Pinboard: JavaScript                                                              --}}
+{{!-- ======================================================================================== --}}
+
+<script type="text/javascript">
+    (function() {
+        const container = document.getElementById("product-pinboard-{{_.id}}");
+
+        if (!container) {
+            console.error("Product Pinboard: Widget container not found.")
+            return;
+        }
+
+        // ---------------------------------------------------------------------------------------------
+        // Variable Initialization:
+        // ---------------------------------------------------------------------------------------------
+
+        const pins = Array.prototype.slice.call(container.querySelectorAll(".product-pinboard__pin"));
+        const cards = Array.prototype.slice.call(container.querySelectorAll(".product-pinboard__card"));
+        const navButtons = Array.prototype.slice.call(container.querySelectorAll("[data-pin-nav]"));
+        const dots = Array.prototype.slice.call(container.querySelectorAll("[data-pin-dot]"));
+
+        const pinIndexArr = pins.map(function(pin) { return pin.getAttribute("data-pin-index")});
+
+        /**
+        * Sets the active state on the pin, card, and dot corresponding to the given pin index.
+        * @param {string} pinIndex - The data-pin-index of the pin to activate.
+        */
+        function setActive(pinIndex) {
+            pins.forEach(function(pin) {
+                pin.classList.toggle("is-active", pin.getAttribute("data-pin-index") === pinIndex);
+            });
+            cards.forEach(function(card) {
+                card.classList.toggle("is-active", card.getAttribute("data-pin-index") === pinIndex);
+            });
+            dots.forEach(function(dot) {
+                dot.classList.toggle("is-active", dot.getAttribute("data-pin-dot") === pinIndex);
+            });
+        }
+
+        /**
+        * Gets the next pin index based on the current active index and direction of navigation.
+        * @param {string|null} currentIndex - The data-pin-index of the currently active pin, or null if no pin is active.
+        * @param {string} direction - The direction of navigation, either "prev" or "next".
+        * @returns {string|null} - The data-pin-index of the next pin to activate, or null if there are no pins.
+        */
+        function getNextIndex(currentIndex, direction) {
+            if (!pinIndexArr.length) return null;
+            const currentPosition = pinIndexArr.indexOf(currentIndex);
+            if (currentPosition === -1) {
+                return pinIndexArr[0];
+            }
+            if (direction === "prev") {
+                // -----------------------------------------------------------------------------------------
+                // Loop back to the end of the array if we're at the beginning.
+                // - Adding the array length before applying the modulo ensures a positive index, even if 0.
+                // -----------------------------------------------------------------------------------------
+                return pinIndexArr[(currentPosition - 1 + pinIndexArr.length) % pinIndexArr.length];
+            }
+            // ---------------------------------------------------------------------------------------------
+            // Loop back to the beginning of the array if we're at the end.
+            // - The modulo handles the wrap-around, returning to 0 after reaching the last index.
+            // ---------------------------------------------------------------------------------------------
+            return pinIndexArr[(currentPosition + 1) % pinIndexArr.length];
+        }
+
+        // ---------------------------------------------------------------------------------------------
+        // Event Listener Delegation:
+        // ---------------------------------------------------------------------------------------------
+
+        pins.forEach(function(pin) {
+            pin.addEventListener('click', function() {
+                setActive(pin.getAttribute('data-pin-index'));
+            });
+        });
+
+        navButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                const activePin = container.querySelector(".product-pinboard__pin.is-active");
+                const activeIndex = activePin ? activePin.getAttribute("data-pin-index") : null;
+                const nextIndex = getNextIndex(activeIndex, button.getAttribute("data-pin-nav"));
+                if (nextIndex !== null) {
+                    setActive(nextIndex);
+                }
+            });
+        });
+
+        dots.forEach(function(dot) {
+            dot.addEventListener("click", function() {
+                const targetIndex = dot.getAttribute("data-pin-dot");
+                if (targetIndex) {
+                    setActive(targetIndex);
+                }
+            });
+        });
+
+        // ---------------------------------------------------------------------------------------------
+        // Activate the first pin by default.
+        // ---------------------------------------------------------------------------------------------
+
+        if (pinIndexArr.length) {
+            setActive(pinIndexArr[0]);
+        }
+    })();
+</script>

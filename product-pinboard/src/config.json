@@ -1,0 +1,44 @@
+{
+  "pins": [
+    {
+      "xPosition": 15,
+      "yPosition": 25,
+      "productId": "116"
+    },
+    {
+      "xPosition": 50,
+      "yPosition": 25,
+      "productId": "117"
+    },
+    {
+      "xPosition": 85,
+      "yPosition": 25,
+      "productId": "115"
+    }
+  ],
+  "pinboardTitle": "Pinboard Title",
+  "pinboardDescription": "A custom product pinboard widget for BigCommerce Page Builder with interactive pins, tooltips, and a synced product card carousel.",
+  "pinboardTitleTextColor": "#000000",
+  "pinboardDescriptionTextColor": "#000000",
+  "pinboardTitleFontSize": 36,
+  "pinboardDescriptionFontSize": 16,
+  "pinboardImage": {
+    "src": "https://placehold.jp/30/777777/ffffff/900x900.png?text=Add+Image+In+Widget+Settings",
+    "type": "IMAGE_MANAGER"
+  },
+  "pinboardImageAltText": "Pinboard Image",
+  "showProductCardAboveImage": false,
+  "showProductSku": true,
+  "tabletBreakpointWidth": 900,
+  "mobileBreakpointWidth": 400,
+  "pinDefaultSize": 18,
+  "pinActiveSize": 28,
+  "pinDefaultColor": "#ffffff",
+  "pinDefaultBorderColor": "#d0d0d0",
+  "pinActiveColor": "#1f1f1f",
+  "pinActiveBorderColor": "#1f1f1f",
+  "cardBackgroundColor": "#ffffff",
+  "cardBorderColor": "#e6e6e6",
+  "cardBorderRadius": 12,
+  "cardLinkColor": "blue"
+}

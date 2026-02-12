@@ -1,0 +1,302 @@
+[
+  {
+    "type": "hidden",
+    "settings": [
+      {
+        "type": "graphQl",
+        "id": "graphQueries",
+        "typeMeta": {
+          "mappings": {
+            "productIds": {
+              "reads": "pins.*.productId",
+              "type": "Int!"
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "array",
+    "label": "Pins",
+    "id": "pins",
+    "defaultCount": 3,
+    "entryLabel": "Pin",
+    "schema": [
+      {
+        "type": "tab",
+        "label": "Pin",
+        "sections": [
+          {
+            "label": "Position",
+            "settings": [
+              {
+                "type": "range",
+                "label": "X Position",
+                "id": "xPosition",
+                "default": 50,
+                "typeMeta": {
+                  "rangeValues": {
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%"
+                  }
+                }
+              },
+              {
+                "type": "range",
+                "label": "Y Position",
+                "id": "yPosition",
+                "default": 50,
+                "typeMeta": {
+                  "rangeValues": {
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "label": "Product",
+            "settings": [
+              {
+                "type": "input",
+                "label": "Product ID",
+                "id": "productId",
+                "default": "",
+                "typeMeta": {
+                  "placeholder": "Enter Product ID"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "tab",
+    "label": "Design",
+    "sections": [
+      {
+        "label": "Pinboard Header Settings",
+        "settings": [
+          {
+            "type": "input",
+            "id": "pinboardTitle",
+            "label": "Pinboard Title",
+            "default": "Pinboard Title"
+          },
+          {
+            "type": "color",
+            "id": "pinboardTitleTextColor",
+            "label": "Pinboard Title Text Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "pinboardTitleFontSize",
+            "label": "Pinboard Title Font Size",
+            "default": 36,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 12,
+                "max": 48,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "input",
+            "id": "pinboardDescription",
+            "label": "Pinboard Description",
+            "default": "A custom product pinboard widget for BigCommerce Page Builder with interactive pins, tooltips, and a synced product card carousel."
+          },
+          {
+            "type": "color",
+            "id": "pinboardDescriptionTextColor",
+            "label": "Pinboard Description Text Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "pinboardDescriptionFontSize",
+            "label": "Pinboard Description Font Size",
+            "default": 16,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 12,
+                "max": 36,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pinboard Image Settings",
+        "settings": [
+          {
+            "type": "imageManager",
+            "id": "pinboardImage",
+            "default": {
+              "src": "https://placehold.jp/30/777777/ffffff/900x900.png?text=Add+Image+In+Widget+Settings",
+              "type": "IMAGE_MANAGER"
+            }
+          },
+          {
+            "type": "input",
+            "id": "pinboardImageAltText",
+            "label": "Pinboard Image Alt Text",
+            "default": "Pinboard Image"
+          }
+        ]
+      },
+            {
+        "label": "Breakpoint Settings",
+        "settings": [
+          {
+            "type": "range",
+            "id": "tabletBreakpointWidth",
+            "label": "Tablet Breakpoint Width",
+            "default": 900,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 400,
+                "max": 1200,
+                "step": 10,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "range",
+            "id": "mobileBreakpointWidth",
+            "label": "Mobile Breakpoint Width",
+            "default": 400,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 200,
+                "max": 800,
+                "step": 10,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "boolean",
+            "id": "showProductCardAboveImage",
+            "label": "Show Product Card Above Image",
+            "default": true
+          }
+        ]
+      },
+      {
+        "label": "Pin Settings",
+        "settings": [
+          {
+            "type": "range",
+            "label": "Pin Default Size",
+            "id": "pinDefaultSize",
+            "default": 18,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 8,
+                "max": 60,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "color",
+            "id": "pinDefaultColor",
+            "label": "Pin Default Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "pinDefaultBorderColor",
+            "label": "Pin Default Border Color",
+            "default": "#d0d0d0"
+          },
+          {
+            "type": "range",
+            "label": "Pin Active Size",
+            "id": "pinActiveSize",
+            "default": 28,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 8,
+                "max": 80,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "color",
+            "id": "pinActiveColor",
+            "label": "Pin Active Color",
+            "default": "#1f1f1f"
+          },
+          {
+            "type": "color",
+            "id": "pinActiveBorderColor",
+            "label": "Pin Active Border Color",
+            "default": "#1f1f1f"
+          }
+        ]
+      },
+      {
+        "label": "Product Card Settings",
+        "settings": [
+          {
+            "type": "color",
+            "id": "cardBackgroundColor",
+            "label": "Card Background Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "cardBorderColor",
+            "label": "Card Border Color",
+            "default": "#e6e6e6"
+          },
+          {
+            "type": "color",
+            "id": "cardLinkColor",
+            "label": "Card Link Color",
+            "default": "blue"
+          },
+          {
+            "type": "range",
+            "id": "cardBorderRadius",
+            "label": "Card Border Radius",
+            "default": 12,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 40,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "boolean",
+            "id": "showProductSku",
+            "label": "Show Product Card SKU",
+            "default": false
+          }
+        ]
+      }
+    ]
+  }
+]
