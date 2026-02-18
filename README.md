@@ -1,6 +1,6 @@
 # BigCommerce Widgets
 
-A collection of BigCommerce Page Builder widgets that I've built for enhanced storefront functionality.
+A collection of BigCommerce Page Builder widgets that I've created for enhanced storefront functionality.
 
 ## Product Pinboard
 
