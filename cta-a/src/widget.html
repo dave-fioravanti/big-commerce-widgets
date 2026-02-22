@@ -1,0 +1,186 @@
+{{!-- ======================================================================================== --}}
+{{!-- CTA A: Stylesheet                                                                        --}}
+{{!-- ======================================================================================== --}}
+
+<style>
+    .cta-a--{{_.id}} {
+        border-radius: {{#if ctaLayoutBorderRadius}}{{ctaLayoutBorderRadius}}{{else}}0{{/if}}px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            {{#eq ctaLayoutGridConfiguration 'imageRight'}}
+                "content image"
+            {{else}}
+                "image content"
+            {{/eq}};
+        gap: {{#if ctaLayoutGridGap}}{{ctaLayoutGridGap}}{{else}}32{{/if}}px;
+        margin-top: {{#if ctaLayoutMargin}}{{ctaLayoutMargin.top.value}}{{else}}0{{/if}}{{#if ctaLayoutMargin}}{{ctaLayoutMargin.top.type}}{{else}}px{{/if}};
+        margin-right: {{#if ctaLayoutMargin}}{{ctaLayoutMargin.right.value}}{{else}}0{{/if}}{{#if ctaLayoutMargin}}{{ctaLayoutMargin.right.type}}{{else}}px{{/if}};
+        margin-bottom: {{#if ctaLayoutMargin}}{{ctaLayoutMargin.bottom.value}}{{else}}0{{/if}}{{#if ctaLayoutMargin}}{{ctaLayoutMargin.bottom.type}}{{else}}px{{/if}};
+        margin-left: {{#if ctaLayoutMargin}}{{ctaLayoutMargin.left.value}}{{else}}0{{/if}}{{#if ctaLayoutMargin}}{{ctaLayoutMargin.left.type}}{{else}}px{{/if}};
+        padding-top: {{#if ctaLayoutPadding}}{{ctaLayoutPadding.top.value}}{{else}}16{{/if}}{{#if ctaLayoutPadding}}{{ctaLayoutPadding.top.type}}{{else}}px{{/if}};
+        padding-right: {{#if ctaLayoutPadding}}{{ctaLayoutPadding.right.value}}{{else}}16{{/if}}{{#if ctaLayoutPadding}}{{ctaLayoutPadding.right.type}}{{else}}px{{/if}};
+        padding-bottom: {{#if ctaLayoutPadding}}{{ctaLayoutPadding.bottom.value}}{{else}}16{{/if}}{{#if ctaLayoutPadding}}{{ctaLayoutPadding.bottom.type}}{{else}}px{{/if}};
+        padding-left: {{#if ctaLayoutPadding}}{{ctaLayoutPadding.left.value}}{{else}}16{{/if}}{{#if ctaLayoutPadding}}{{ctaLayoutPadding.left.type}}{{else}}px{{/if}};
+        background-color: {{#if ctaLayoutBackgroundColor}}{{ctaLayoutBackgroundColor}}{{else}}#FFFFFF{{/if}};
+    }
+
+    .cta-a--{{_.id}} .cta-a__image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: image;
+    }
+
+    .cta-a--{{_.id}} .cta-a__image {
+        border-radius: {{#if ctaImageBorderRadius}}{{ctaImageBorderRadius}}{{else}}0{{/if}}px;
+        display: block;
+        height: auto;
+        max-width: {{#if ctaImageMaxWidth}}{{ctaImageMaxWidth}}{{else}}100{{/if}}%;
+    }
+
+    .cta-a--{{_.id}} .cta-a__content-wrapper {
+        display: flex;
+        flex-direction: column;
+        grid-area: content;
+        {{#if ctaLayoutCenterContentVertical}}
+            justify-content: center;
+        {{/if}}
+    }
+
+    .cta-a--{{_.id}} .cta-a__title {
+        color: {{#if ctaTitleColor}}{{ctaTitleColor}}{{else}}#000000{{/if}};
+        font-weight: bold;
+        font-size: {{#if ctaTitleFontSize}}{{ctaTitleFontSize}}{{else}}36{{/if}}px;
+        margin-top: {{#if ctaTitleMargin}}{{ctaTitleMargin.top.value}}{{else}}0{{/if}}{{#if ctaTitleMargin}}{{ctaTitleMargin.top.type}}{{else}}px{{/if}};
+        margin-right: {{#if ctaTitleMargin}}{{ctaTitleMargin.right.value}}{{else}}0{{/if}}{{#if ctaTitleMargin}}{{ctaTitleMargin.right.type}}{{else}}px{{/if}};
+        margin-bottom: {{#if ctaTitleMargin}}{{ctaTitleMargin.bottom.value}}{{else}}0{{/if}}{{#if ctaTitleMargin}}{{ctaTitleMargin.bottom.type}}{{else}}px{{/if}};
+        margin-left: {{#if ctaTitleMargin}}{{ctaTitleMargin.left.value}}{{else}}0{{/if}}{{#if ctaTitleMargin}}{{ctaTitleMargin.left.type}}{{else}}px{{/if}};
+        text-align: {{#if ctaTitleAlignment}}{{ctaTitleAlignment.horizontal}}{{else}}left{{/if}};
+    }
+    
+    .cta-a--{{_.id}} .cta-a__description {
+        color: {{#if ctaDescriptionColor}}{{ctaDescriptionColor}}{{else}}#000000{{/if}};
+        font-size: {{#if ctaDescriptionFontSize}}{{ctaDescriptionFontSize}}{{else}}16{{/if}}px;
+        margin-top: {{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.top.value}}{{else}}0{{/if}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.top.type}}{{else}}px{{/if}};
+        margin-right: {{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.right.value}}{{else}}0{{/if}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.right.type}}{{else}}px{{/if}};
+        margin-bottom: {{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.bottom.value}}{{else}}0{{/if}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.bottom.type}}{{else}}px{{/if}};
+        margin-left: {{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.left.value}}{{else}}0{{/if}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.left.type}}{{else}}px{{/if}};
+        text-align: {{#if ctaDescriptionAlignment}}{{ctaDescriptionAlignment.horizontal}}{{else}}left{{/if}};
+    }
+
+    .cta-a--{{_.id}} .cta-a__action {
+        background-color: {{#if ctaActionBackgroundColor}}{{ctaActionBackgroundColor}}{{else}}#000000{{/if}};
+        border-color: {{#if ctaActionBorderColor}}{{ctaActionBorderColor}}{{else}}#000000{{/if}};
+        border-radius: {{#if ctaActionBorderRadius}}{{ctaActionBorderRadius}}{{else}}4{{/if}}px;
+        border-style: solid;
+        border-width: {{#if ctaActionBorderWidth}}{{ctaActionBorderWidth}}{{else}}1{{/if}}px;
+        color: {{#if ctaActionColor}}{{ctaActionColor}}{{else}}#000000{{/if}};
+        font-size: {{#if ctaActionFontSize}}{{ctaActionFontSize}}{{else}}16{{/if}}px;
+        text-align: {{#if ctaActionAlignment}}{{ctaActionAlignment.horizontal}}{{else}}left{{/if}};
+        margin-top: 0;
+    padding-top: {{#if ctaActionPadding}}{{ctaActionPadding.top.value}}{{else}}8{{/if}}{{#if ctaActionPadding}}{{ctaActionPadding.top.type}}{{else}}px{{/if}};
+    padding-right: {{#if ctaActionPadding}}{{ctaActionPadding.right.value}}{{else}}16{{/if}}{{#if ctaActionPadding}}{{ctaActionPadding.right.type}}{{else}}px{{/if}};
+    padding-bottom: {{#if ctaActionPadding}}{{ctaActionPadding.bottom.value}}{{else}}8{{/if}}{{#if ctaActionPadding}}{{ctaActionPadding.bottom.type}}{{else}}px{{/if}};
+    padding-left: {{#if ctaActionPadding}}{{ctaActionPadding.left.value}}{{else}}16{{/if}}{{#if ctaActionPadding}}{{ctaActionPadding.left.type}}{{else}}px{{/if}};
+        text-decoration: none;
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        width: max-content;
+        {{#eq ctaActionAlignment.horizontal 'center'}}
+            margin-left: auto;
+            margin-right: auto;
+        {{/eq}}
+    }
+
+    .cta-a--{{_.id}} .cta-a__action:hover,
+    .cta-a--{{_.id}} .cta-a__action:focus,
+    .cta-a--{{_.id}} .cta-a__action:active {
+        background-color: {{#if ctaActionHoverBackgroundColor}}{{ctaActionHoverBackgroundColor}}{{else}}#FFFFFF{{/if}};
+        border-color: {{#if ctaActionHoverBorderColor}}{{ctaActionHoverBorderColor}}{{else}}#000000{{/if}};
+        color: {{#if ctaActionHoverColor}}{{ctaActionHoverColor}}{{else}}#000000{{/if}};
+    }
+    
+    @media (max-width: {{#if ctaBreakpointWidth}}{{ctaBreakpointWidth}}{{else}}400{{/if}}px) {
+        .cta-a--{{_.id}} {
+            grid-template-columns: 1fr;
+            gap: {{#if ctaLayoutGridGapBreakpoint}}{{ctaLayoutGridGapBreakpoint}}{{else}}{{#if ctaLayoutGridGap}}{{ctaLayoutGridGap}}{{else}}32{{/if}}{{/if}}px;
+            grid-template-areas: 
+                {{#if swapLayoutBelowBreakpoint}}
+                    "image"
+                    "content"
+                {{else}}
+                    "content"
+                    "image"
+                {{/if}};
+        }
+
+        .cta-a--{{_.id}} .cta-a__image-wrapper {
+            order: {{#if swapLayoutBelowBreakpoint}}{{0}}{{else}}{{1}}{{/if}};
+            grid-area: image;
+        }
+
+        .cta-a--{{_.id}} .cta-a__content-wrapper {
+            order: {{#if swapLayoutBelowBreakpoint}}{{1}}{{else}}{{0}}{{/if}};
+            grid-area: content;
+        }
+
+        .cta-a--{{_.id}} .cta-a__title {
+            text-align: {{#if ctaTitleAlignmentBreakpoint}}{{ctaTitleAlignmentBreakpoint.horizontal}}{{else}}{{#if ctaTitleAlignment}}{{ctaTitleAlignment.horizontal}}{{else}}left{{/if}}{{/if}};
+            margin-top: {{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.top.value}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.top.value}}{{else}}0{{/if}}{{/if}}{{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.top.type}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.top.type}}{{else}}px{{/if}}{{/if}};
+            margin-right: {{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.right.value}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.right.value}}{{else}}0{{/if}}{{/if}}{{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.right.type}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.right.type}}{{else}}px{{/if}}{{/if}};
+            margin-bottom: {{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.bottom.value}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.bottom.value}}{{else}}0{{/if}}{{/if}}{{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.bottom.type}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.bottom.type}}{{else}}px{{/if}}{{/if}};
+            margin-left: {{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.left.value}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.left.value}}{{else}}0{{/if}}{{/if}}{{#if ctaTitleMarginBreakpoint}}{{ctaTitleMarginBreakpoint.left.type}}{{else}}{{#if ctaTitleMargin}}{{ctaTitleMargin.left.type}}{{else}}px{{/if}}{{/if}};
+        }
+
+        .cta-a--{{_.id}} .cta-a__description {
+            text-align: {{#if ctaDescriptionAlignmentBreakpoint}}{{ctaDescriptionAlignmentBreakpoint.horizontal}}{{else}}{{#if ctaDescriptionAlignment}}{{ctaDescriptionAlignment.horizontal}}{{else}}left{{/if}}{{/if}};
+            margin-top: {{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.top.value}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.top.value}}{{else}}0{{/if}}{{/if}}{{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.top.type}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.top.type}}{{else}}px{{/if}}{{/if}};
+            margin-right: {{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.right.value}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.right.value}}{{else}}0{{/if}}{{/if}}{{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.right.type}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.right.type}}{{else}}px{{/if}}{{/if}};
+            margin-bottom: {{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.bottom.value}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.bottom.value}}{{else}}0{{/if}}{{/if}}{{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.bottom.type}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.bottom.type}}{{else}}px{{/if}}{{/if}};
+            margin-left: {{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.left.value}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.left.value}}{{else}}0{{/if}}{{/if}}{{#if ctaDescriptionMarginBreakpoint}}{{ctaDescriptionMarginBreakpoint.left.type}}{{else}}{{#if ctaDescriptionMargin}}{{ctaDescriptionMargin.left.type}}{{else}}px{{/if}}{{/if}};
+        }
+
+        .cta-a--{{_.id}} .cta-a__action {
+            text-align: {{#if ctaActionAlignmentBreakpoint}}{{ctaActionAlignmentBreakpoint.horizontal}}{{else}}{{#if ctaActionAlignment}}{{ctaActionAlignment.horizontal}}{{else}}left{{/if}}{{/if}};
+            {{#eq ctaActionAlignmentBreakpoint.horizontal 'center'}}
+                margin-left: auto;
+                margin-right: auto;
+            {{else}}
+                {{#eq ctaActionAlignmentBreakpoint.horizontal 'right'}}
+                    margin-left: auto;
+                    margin-right: 0;
+                {{else}}
+                    margin-left: 0;
+                    margin-right: 0;
+                {{/eq}}
+            {{/eq}}
+            {{#if ctaEnableFullWidthActionBelowBreakpoint}}
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                display: block;
+            {{/if}}
+        }
+    }
+</style>
+
+{{!-- ======================================================================================== --}}
+{{!-- CTA A: Layout                                                                            --}}
+{{!-- ======================================================================================== --}}
+
+<section class="cta-a cta-a--{{_.id}}" id="cta-a-{{_.id}}">
+    <div class="cta-a__image-wrapper">
+        <img class="cta-a__image" src="{{ctaImage.src}}" alt="{{ctaImageAltText}}" loading="lazy">
+    </div>
+    <div class="cta-a__content-wrapper">
+        <{{#if ctaTitleTag}}{{ctaTitleTag}}{{else}}h2{{/if}} class="cta-a__title">
+            {{ctaTitleText}}
+        </{{#if ctaTitleTag}}{{ctaTitleTag}}{{else}}h2{{/if}}>
+        <p class="cta-a__description">
+            {{ctaDescriptionText}}
+        </p>
+        <a class="cta-a__action" href="{{ctaActionLink}}">
+            {{ctaActionText}}
+        </a>
+    </div>
+</section>
