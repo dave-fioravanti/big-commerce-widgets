@@ -2,6 +2,8 @@
 
 A custom product pinboard widget for BigCommerce Page Builder with interactive pins, tooltips, and a synced product card carousel.
 
+[Design Specification](design.png)
+
 <img src="./example.gif" width="600" alt="Product Pinboard Example GIF">
 
 ## Features
