@@ -1,0 +1,180 @@
+{
+  "ctaLayoutBackgroundColor": "transparent",
+  "ctaLayoutMargin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "ctaLayoutPadding": {
+    "top": {
+      "value": "16",
+      "type": "px"
+    },
+    "right": {
+      "value": "16",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "16",
+      "type": "px"
+    },
+    "left": {
+      "value": "16",
+      "type": "px"
+    }
+  },
+  "ctaLayoutGridGap": 32,
+  "ctaLayoutGridGapBreakpoint": 24,
+  "ctaLayoutGridConfiguration": "imageLeft",
+  "swapLayoutBelowBreakpoint": false,
+  "ctaLayoutBorderRadius": 18,
+  "ctaLayoutCenterContentVertical": true,
+  "ctaImage": {
+    "src": "https://placehold.jp/30/777777/ffffff/900x900.png?text=Add+Image+In+Widget+Settings",
+    "type": "IMAGE_MANAGER"
+  },
+  "ctaImageAltText": "CTA Image",
+  "ctaImageMaxWidth": 100,
+  "ctaImageBorderRadius": 18,
+  "ctaTitleTag": "h2",
+  "ctaTitleText": "CTA Title Text",
+  "ctaTitleColor": "#000000",
+  "ctaTitleFontSize": 36,
+  "ctaTitleMargin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "ctaTitleAlignment": {
+    "horizontal": "left"
+  },
+  "ctaTitleMarginBreakpoint": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "0",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "ctaTitleAlignmentBreakpoint": {
+    "horizontal": "left"
+  },
+  "ctaDescriptionText": "CTA Description Text",
+  "ctaDescriptionColor": "#000000",
+  "ctaDescriptionFontSize": 16,
+  "ctaDescriptionMargin": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "16",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "ctaDescriptionAlignment": {
+    "horizontal": "left"
+  },
+  "ctaDescriptionMarginBreakpoint": {
+    "top": {
+      "value": "0",
+      "type": "px"
+    },
+    "right": {
+      "value": "0",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "16",
+      "type": "px"
+    },
+    "left": {
+      "value": "0",
+      "type": "px"
+    }
+  },
+  "ctaDescriptionAlignmentBreakpoint": {
+    "horizontal": "left"
+  },
+  "ctaActionLink": "/",
+  "ctaActionText": "CTA Action Text",
+  "ctaActionFontSize": 16,
+  "ctaActionColor": "#FFFFFF",
+  "ctaActionBackgroundColor": "#000000",
+  "ctaActionBorderColor": "#000000",
+  "ctaActionActiveColor": "#FFFFFF",
+  "ctaActionBackgroundActiveColor": "#000000",
+  "ctaActionBorderActiveColor": "#000000",
+  "ctaActionBorderWidth": 1,
+  "ctaActionBorderRadius": 8,
+  "ctaActionPadding": {
+    "top": {
+      "value": "8",
+      "type": "px"
+    },
+    "right": {
+      "value": "16",
+      "type": "px"
+    },
+    "bottom": {
+      "value": "8",
+      "type": "px"
+    },
+    "left": {
+      "value": "16",
+      "type": "px"
+    }
+  },
+  "ctaActionAlignment": {
+    "horizontal": "left"
+  },
+  "ctaActionAlignmentBreakpoint": {
+    "horizontal": "center"
+  },
+  "ctaEnableFullWidthActionBelowBreakpoint": true,
+  "ctaBreakpointWidth": 400
+}
