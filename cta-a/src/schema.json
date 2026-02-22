@@ -1,0 +1,569 @@
+[
+  {
+    "type": "tab",
+    "label": "Design",
+    "sections": [
+      {
+        "label": "Layout Settings",
+        "settings": [
+          {
+            "type": "color",
+            "id": "ctaLayoutBackgroundColor",
+            "label": "Layout Background Color",
+            "default": "transparent"
+          },
+          {
+            "type": "boxModel",
+            "id": "ctaLayoutMargin",
+            "label": "Layout Margin",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "0",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "boxModel",
+            "id": "ctaLayoutPadding",
+            "label": "Layout Padding",
+            "default": {
+              "top": {
+                "value": "16",
+                "type": "px"
+              },
+              "right": {
+                "value": "16",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "16",
+                "type": "px"
+              },
+              "left": {
+                "value": "16",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "range",
+            "id": "ctaLayoutGridGap",
+            "label": "Layout Grid Gap",
+            "default": 32,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "range",
+            "id": "ctaLayoutGridGapBreakpoint",
+            "label": "Layout Grid Gap (Below Breakpoint)",
+            "default": 24,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "select",
+            "id": "ctaLayoutGridConfiguration",
+            "label": "Layout Grid Configuration",
+            "default": "imageLeft",
+            "typeMeta": {
+              "selectOptions": [
+                {
+                  "label": "Image Left",
+                  "value": "imageLeft"
+                },
+                {
+                  "label": "Image Right",
+                  "value": "imageRight"
+                }
+              ]
+            }
+          },
+          {
+            "type": "boolean",
+            "id": "swapLayoutBelowBreakpoint",
+            "label": "Swap Layout Below Breakpoint",
+            "default": false
+          },
+          {
+            "type": "range",
+            "id": "ctaLayoutBorderRadius",
+            "label": "Layout Border Radius",
+            "default": 18,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 50,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "boolean",
+            "id": "ctaLayoutCenterContentVertical",
+            "label": "Center Content Vertically",
+            "default": true
+          }
+        ]
+      },
+      {
+        "label": "Image Settings",
+        "settings": [
+          {
+            "type": "imageManager",
+            "id": "ctaImage",
+            "default": {
+              "src": "https://placehold.jp/30/777777/ffffff/900x900.png?text=Add+Image+In+Widget+Settings",
+              "type": "IMAGE_MANAGER"
+            }
+          },
+          {
+            "type": "input",
+            "id": "ctaImageAltText",
+            "label": "Image Alt Text",
+            "default": "CTA Image"
+          },
+          {
+            "type": "range",
+            "id": "ctaImageMaxWidth",
+            "label": "Image Max Width",
+            "default": 100,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 10,
+                "max": 100,
+                "step": 1,
+                "unit": "%"
+              }
+            }
+          },
+          {
+            "type": "range",
+            "id": "ctaImageBorderRadius",
+            "label": "Image Border Radius",
+            "default": 18,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 50,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Title Settings",
+        "settings": [
+          {
+            "type": "select",
+            "id": "ctaTitleTag",
+            "label": "Title Tag",
+            "default": "h2",
+            "typeMeta": {
+              "selectOptions": [
+                {
+                  "label": "h2",
+                  "value": "h2"
+                },
+                {
+                  "label": "h3",
+                  "value": "h3"
+                },
+                {
+                  "label": "h4",
+                  "value": "h4"
+                }
+              ]
+            }
+          },
+          {
+            "type": "input",
+            "id": "ctaTitleText",
+            "label": "Title Text",
+            "default": "CTA Title Text"
+          },
+          {
+            "type": "color",
+            "id": "ctaTitleColor",
+            "label": "Title Text Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "ctaTitleFontSize",
+            "label": "Title Font Size",
+            "default": 36,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 12,
+                "max": 48,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "boxModel",
+            "id": "ctaTitleMargin",
+            "label": "Title Margin",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "0",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "alignment",
+            "id": "ctaTitleAlignment",
+            "label": "Title Alignment",
+            "default": {
+              "horizontal": "left"
+            },
+            "typeMeta": {
+              "display": "horizontal"
+            }
+          },
+          {
+            "type": "boxModel",
+            "id": "ctaTitleMarginBreakpoint",
+            "label": "Title Margin (Below Breakpoint)",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "0",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "alignment",
+            "id": "ctaTitleAlignmentBreakpoint",
+            "label": "Title Alignment (Below Breakpoint)",
+            "default": {
+              "horizontal": "left"
+            },
+            "typeMeta": {
+              "display": "horizontal"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Description Settings",
+        "settings": [
+          {
+            "type": "input",
+            "id": "ctaDescriptionText",
+            "label": "Description Text",
+            "default": "CTA Description Text"
+          },
+          {
+            "type": "color",
+            "id": "ctaDescriptionColor",
+            "label": "Description Text Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "ctaDescriptionFontSize",
+            "label": "Description Font Size",
+            "default": 16,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 12,
+                "max": 48,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "boxModel",
+            "id": "ctaDescriptionMargin",
+            "label": "Description Margin",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "16",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "alignment",
+            "id": "ctaDescriptionAlignment",
+            "label": "Description Alignment",
+            "default": {
+              "horizontal": "left"
+            },
+            "typeMeta": {
+              "display": "horizontal"
+            }
+          },
+          {
+            "type": "boxModel",
+            "id": "ctaDescriptionMarginBreakpoint",
+            "label": "Description Margin (Below Breakpoint)",
+            "default": {
+              "top": {
+                "value": "0",
+                "type": "px"
+              },
+              "right": {
+                "value": "0",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "16",
+                "type": "px"
+              },
+              "left": {
+                "value": "0",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "alignment",
+            "id": "ctaDescriptionAlignmentBreakpoint",
+            "label": "Description Alignment (Below Breakpoint)",
+            "default": {
+              "horizontal": "left"
+            },
+            "typeMeta": {
+              "display": "horizontal"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Action Settings",
+        "settings": [
+          {
+            "type": "input",
+            "id": "ctaActionLink",
+            "label": "Action Link",
+            "default": "/"
+          },
+          {
+            "type": "input",
+            "id": "ctaActionText",
+            "label": "Action Text",
+            "default": "CTA Action Text"
+          },
+                    {
+            "type": "range",
+            "id": "ctaActionFontSize",
+            "label": "Action Font Size",
+            "default": 16,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 12,
+                "max": 48,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "color",
+            "id": "ctaActionColor",
+            "label": "Action Text Color",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "ctaActionBackgroundColor",
+            "label": "Action Background Color",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "ctaActionBorderColor",
+            "label": "Action Border Color",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "ctaActionActiveColor",
+            "label": "Action Active Text Color",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "ctaActionBackgroundActiveColor",
+            "label": "Action Background Active Color",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "ctaActionBorderActiveColor",
+            "label": "Action Border Active Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "ctaActionBorderWidth",
+            "label": "Action Border Width",
+            "default": 1,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 10,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "range",
+            "id": "ctaActionBorderRadius",
+            "label": "Action Border Radius",
+            "default": 8,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 50,
+                "step": 1,
+                "unit": "px"
+              }
+            }
+          },
+          {
+            "type": "boxModel",
+            "id": "ctaActionPadding",
+            "label": "Action Padding",
+            "default": {
+              "top": {
+                "value": "8",
+                "type": "px"
+              },
+              "right": {
+                "value": "16",
+                "type": "px"
+              },
+              "bottom": {
+                "value": "8",
+                "type": "px"
+              },
+              "left": {
+                "value": "16",
+                "type": "px"
+              }
+            }
+          },
+          {
+            "type": "alignment",
+            "id": "ctaActionAlignment",
+            "label": "Action Alignment",
+            "default": {
+              "horizontal": "left"
+            },
+            "typeMeta": {
+              "display": "horizontal"
+            }
+          },
+          {
+            "type": "alignment",
+            "id": "ctaActionAlignmentBreakpoint",
+            "label": "Action Alignment (Below Breakpoint)",
+            "default": {
+              "horizontal": "center"
+            },
+            "typeMeta": {
+              "display": "horizontal"
+            }
+          },
+          {
+            "type": "boolean",
+            "id": "ctaEnableFullWidthActionBelowBreakpoint",
+            "label": "Enable Full Width Action Below Breakpoint",
+            "default": true
+          }
+        ]
+      },
+      {
+        "label": "Breakpoint Settings",
+        "settings": [
+          {
+            "type": "range",
+            "id": "ctaBreakpointWidth",
+            "label": "Breakpoint Width",
+            "default": 400,
+            "typeMeta": {
+              "rangeValues": {
+                "min": 0,
+                "max": 1200,
+                "step": 10,
+                "unit": "px"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
